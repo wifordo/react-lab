@@ -9,11 +9,11 @@
   font-size: 14px;
   line-height: 1.4;
 
-  /* twarde, nieregularne mruganie */
+  /* nieregularne mruganie */
   animation: systemBlink 3.5s steps(1, end) infinite;
 }
 
-/* jak prawdziwy hard error */
+/* styl errora */
 @keyframes systemBlink {
   /* normalnie świeci */
   0%   { opacity: 1; }

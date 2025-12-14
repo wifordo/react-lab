@@ -1,23 +1,24 @@
+import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import {useState} from "react";
+
 
 function App() {
-  const [title, setTitle] = useState('Wall-E');
 
-  function handleChange(event) {
-    setTitle(event.target.value);
-  }
+    const [title, setTitle] = useState('Wall-E');
 
-  let message = '';
-  let isError = false;
+    function handleChange(event) {
 
-  if (title.length < 5) {
-    message = 'Title is too short';
-  } else if (title.length < 8) {
-    message = 'Title is ok';
-  } else {
-    isError = true;
-    message = `
+        setTitle(event.target.value);
+    }
+
+let message = '';
+if(title.length < 5 ){
+message = 'Title is too short'}
+else if (title.length < 8 ){
+message = 'Title is ok'}
+else {
+message = `
 at constructor (github.com/this-repo-does-not-exist-500/internal-error/build-crash/react-lab/node_modules/@babel/parser/lib/index.js:360:19)
 at FlowParserMixin.raise (github.com/this-repo-does-not-exist-500/internal-error/build-crash/react-lab/node_modules/@babel/parser/lib/index.js:6613:19)
 at FlowParserMixin.semicolon (github.com/this-repo-does-not-exist-500/internal-error/build-crash/react-lab/node_modules/@babel/parser/lib/index.js:6910:10)
@@ -42,30 +43,26 @@ at normalizeFile (github.com/this-repo-does-not-exist-500/internal-error/build-c
 at run (github.com/this-repo-does-not-exist-500/internal-error/build-crash/react-lab/node_modules/@babel/core/lib/transformation/index.js:22:50)
 at step (github.com/this-repo-does-not-exist-500/internal-error/build-crash/react-lab/node_modules/gensync/index.js:261:32)
 at async.call.result.err.err (github.com/this-repo-does-not-exist-500/internal-error/build-crash/react-lab/node_modules/gensync/index.js:223:11)
-`;
-  }
+`
+}
 
-  return (
-    <div className="app">
-      <h1>My favourite movies to watch</h1>
-      <h2>My favourite movie for today is {title}</h2>
+    return (
+        <div>
+            <h1>My favourite movies to watch</h1>
+            <h2>My favourite movie for today is {title}</h2>
+            {
+                       title.length > 0 && <pre className="crash">{message}</pre>
 
-      {title.length > 0 && (
-        isError ? (
-          <pre className="crash">{message}</pre>
-        ) : (
-          <div className="info">{message}</div>
-        )
-      )}
+                        }
+            <input type="text" onChange={handleChange}/>
+            <button type="button" onClick={() => alert(title)}>
 
-      <input
-        type="text"
-        value={title}
-        onChange={handleChange}
-        placeholder="Enter movie title"
-      />
-    </div>
-  );
+    Pokaż tytuł filmu
+
+</button>
+
+        </div>
+    );
 }
 
 export default App;
